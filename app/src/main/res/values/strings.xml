@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">MM: Currency detection</string>
+    <string name="romerock">Rome Rock</string>
+    <string name="romerock_site">http://www.romerock.com</string>
+    <string name="thank_you">
+        <![CDATA[
+            <style>
+                .text{
+                    font-size:14px;
+                    color:#FFFFFF;
+                    line-height:20px;
+                }
+            </style>
+            <div align=justify class="text">Thank you for downloading our Mini Module! Follow us on GitHub for more cool Mini Modules that will help you to make an awesome app a lot easier.</div>
+        ]]></string>
+    <string name="tittle_header">Mini Module: Language detection</string>
+    <string name="follow_us_twitter">https://twitter.com/RomeRock_Apps</string>
+    <string name="follow_us_twitter_profile">twitter://user?screen_name=RomeRock_Apps</string>
+    <string name="follow_us_facebook">https://www.facebook.com/RomeRock-App-Studio-337180269970605</string>
+    <string name="follow_us_facebook_profile">fb://page/337180269970605</string>
+    <string name="follow_us_git_hub">https://github.com/RomeRock</string>
+    <string name="romerock_page">http://romerock.com</string>
+    <string name="preferences_name">MM_ROMEROCK</string>
+    <string name="currency">\tCurrency\t</string>
+    <string name="preferences_currency_symbol">currencySymbol</string>
+    <string name="preferences_currency_country_money_symbol">currencyCountrySymbol</string>
+    <string name="preferences_currency_name_money">nameMoney</string>
+    <string name="preferences_currency_country_code">countryCode</string>
+    <string name="preferences_currency_money">currencyMoney</string>
+    <string name="settings_option_currency_change">Your country selected is %1$s</string>
+
+    <string name="default_settings">Use location</string>
+    <string name="settings_option_select_lenguage">Select language</string>
+    <string name="settings_option_language_change">Your language is %1$s</string>
+    <string name="settings_preview">Preview</string>
+    <string name="language_popup_content">We have detected your device uses this language:</string>
+    <string name="select_currency">Select currency</string>
+    <string name="name_language">English</string>
+    <string name="pop_up_change">Change currency</string>
+    <string name="search">Search</string>
+    <string name="settings_option_select_currency">Select currency</string>
+    <string name="value_with_currency">100.00 %1$s</string>
+
+
+</resources>
