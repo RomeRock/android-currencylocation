@@ -11,4 +11,5 @@
     <color name="setting_text_color_list">#343434</color>
     <color name="ratinStar">#EF5E05</color>
     <color name="text_border">#D5D5D5</color>
+    <color name="pop_up_using_currency">#F3FBFB</color>
 </resources>

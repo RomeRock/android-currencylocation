@@ -33,7 +33,7 @@
     <string name="settings_option_select_lenguage">Select language</string>
     <string name="settings_option_language_change">Your language is %1$s</string>
     <string name="settings_preview">Preview</string>
-    <string name="language_popup_content">We have detected your device uses this language:</string>
+    <string name="language_popup_content">We have detected you are using this currency:</string>
     <string name="select_currency">Select currency</string>
     <string name="name_language">English</string>
     <string name="pop_up_change">Change currency</string>

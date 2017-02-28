@@ -1,5 +1,6 @@
 package com.romerock.modules.android.currencylocation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -9,9 +10,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.webkit.WebView;
@@ -57,10 +58,12 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgUseCurrencyDetected;
     @BindView(R.id.txtValueWithCurrency)
     TextView txtValueWithCurrency;
-    private AlertDialog alertDialog;
+    private static android.app.AlertDialog alertDialog;
     private SharedPreferences sharedPref;
     private Locale obj;
     private int DETECT_CODE = 500;
+    private Typeface font;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         view.setBackgroundColor(getResources().getColor(R.color.drawable));
         ((RelativeLayout) findViewById(R.id.relContent)).addView(view);
         view.loadData(getString(R.string.thank_you), "text/html; charset=utf-8", "utf-8");
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Bold.ttf");
+        font = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Bold.ttf");
         textDescription.setTypeface(font);
         font = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf");
         languageDetect.setTypeface(font);
@@ -94,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
         txtValueWithCurrency.setText(getString(R.string.value_with_currency, sharedPref.getString(getString(R.string.preferences_currency_symbol), "$")));
         font = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf");
         txtValueWithCurrency.setTypeface(font);
+        boolean firstTime=sharedPref.getBoolean("firstTimeOpen",true);
+        if(firstTime){
+            popUp();
+        }
     }
 
     @Override
@@ -106,8 +113,46 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public void popUp(){
+        // Detect currency
+        SharedPreferences.Editor ed = sharedPref.edit();
+        ed.putBoolean("firstTimeOpen",false);
+        ed.commit();
+        android.app.AlertDialog.Builder builder;
+        builder = new android.app.AlertDialog.Builder(MainActivity.this);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        builder.setCancelable(true);
+        View view = inflater.inflate(R.layout.pop_up, null);
+        view.findViewById(R.id.popUpOk).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+        view.findViewById(R.id.popUpChange).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+                Intent i = new Intent(MainActivity.this, CurrencySettings.class);
+                startActivityForResult(i, DETECT_CODE);
+            }
+        });
+        TextView text = (TextView) view.findViewById(R.id.txtUseCurrencyDetected);
+        TextView txtTittleDetect = (TextView) view.findViewById(R.id.txtTittleDetect);
+        font = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf");
+        txtTittleDetect.setTypeface(font);
+        text.setText(sharedPref.getString(getString(R.string.preferences_currency_country_money_symbol), "").toString() +
+                " - " + sharedPref.getString(getString(R.string.preferences_currency_name_money), "$").toString());
+        ImageView imgFlag = (ImageView) view.findViewById(R.id.imgUseCurrencyDetected);
+        int id = getResources().getIdentifier(sharedPref.getString(getString(R.string.preferences_currency_country_code), "").toLowerCase(), "drawable", getPackageName());
+        imgFlag.setImageResource(id);
+        builder.setView(view);
+        builder.create();
+        alertDialog = builder.show();
+    }
 
-    @OnClick({R.id.img_logo_romerock, R.id.follow_twitter, R.id.follow_gitHub, R.id.follow_facebook, R.id.btn_detect})
+
+    @OnClick({R.id.img_logo_romerock, R.id.follow_twitter, R.id.follow_gitHub, R.id.follow_facebook, R.id.textDescription, R.id.btn_detect})
     public void onClick(View view) {
         String url = "";
         switch (view.getId()) {
@@ -136,6 +181,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_detect:
                 Intent i = new Intent(MainActivity.this, CurrencySettings.class);
                 startActivityForResult(i, DETECT_CODE);
+                break;
+            case R.id.textDescription:
+                popUp();
                 break;
         }
     }

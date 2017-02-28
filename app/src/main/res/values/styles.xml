@@ -59,7 +59,7 @@
     </style>
     <style name="pop_up_full_tittle">
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:layout_margin">@dimen/min_margin</item>
         <item name="android:textStyle">normal</item>
     </style>

@@ -26,13 +26,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:padding="@dimen/activity_vertical_margin"
             app:srcCompat="@drawable/img_romerock_logo_gray" />
 
         <TextView
             android:id="@+id/txtValueWithCurrency"
             style="@style/textValue"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/relCurrency"
             android:layout_centerHorizontal="true"

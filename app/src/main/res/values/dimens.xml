@@ -19,4 +19,5 @@
     <dimen name="font_size_settings">15dp</dimen>
     <dimen name="min_margin">5dp</dimen>
     <dimen name="pop_up_padding">15sp</dimen>
+    <dimen name="pop_up_use_currency">40sp</dimen>
 </resources>
