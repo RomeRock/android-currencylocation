@@ -94,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
         obj = new Locale("", sharedPref.getString(getString(R.string.preferences_currency_country_code), ""));
         currency.setText(obj.getDisplayCountry() +
                 sharedPref.getString(getString(R.string.preferences_currency_name_money), "$").toString());
-        txtValueWithCurrency.setText(getString(R.string.value_with_currency, sharedPref.getString(getString(R.string.preferences_currency_symbol), "$")));
+        txtValueWithCurrency.setText(getString(R.string.value_with_currency, sharedPref.getString(getString(R.string.preferences_currency_country_money_symbol), "$")));
         font = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf");
         txtValueWithCurrency.setTypeface(font);
-        boolean firstTime=sharedPref.getBoolean("firstTimeOpen",true);
+        boolean firstTime=sharedPref.getBoolean("firstTimeOpen",false);
         if(firstTime){
             popUp();
         }
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        finish();
     }
 
     @Override
@@ -200,4 +200,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
     }
+
+
 }

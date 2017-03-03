@@ -10,6 +10,7 @@
     <TextView
         android:id="@+id/txtTittleDetect"
         style="@style/pop_up_full_tittle"
+        android:paddingTop="@dimen/tittle_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/language_popup_content"

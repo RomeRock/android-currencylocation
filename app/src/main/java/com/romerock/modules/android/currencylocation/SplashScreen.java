@@ -76,7 +76,7 @@ public class SplashScreen extends Activity implements GoogleApiClient.Connection
 		//*************************** Detect Location **********
 		Locale locale = null;
 		if (!sharedPrefs.contains(getString(R.string.preferences_currency_symbol))) {
-			ed.putBoolean("firstTimeOpen",false);
+			ed.putBoolean("firstTimeOpen",true);
 			if (countryCodeLocale == null) {
 				if (!Locale.getDefault().getCountry().toString().equals(""))
 					currency = Currency.getInstance(Locale.getDefault());
@@ -108,11 +108,8 @@ public class SplashScreen extends Activity implements GoogleApiClient.Connection
 		name += currency.getSymbol();
 		ed.putString(getString(R.string.preferences_currency_name_money), name);
 		ed.putString(getString(R.string.preferences_currency_country_money_symbol), currency.getCurrencyCode());
-
-
-
 	}else{
-			ed.putBoolean("firstTimeOpen",true);
+			ed.putBoolean("firstTimeOpen",false);
 		}
 		ed.commit();
 		//****************************************
