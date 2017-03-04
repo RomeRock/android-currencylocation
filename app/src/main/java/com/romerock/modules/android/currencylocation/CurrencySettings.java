@@ -101,7 +101,7 @@ public class CurrencySettings extends AppCompatActivity {
                 Currency currency = Currency.getInstance(locale);
                 SharedPreferences.Editor ed;
                 ed = sharedPrefs.edit();
-                String nameCurrencyMoneey = " - ";
+                String nameCurrencyMoneey = "";
                 if (currency != null) {
                     if (Build.VERSION.SDK_INT >= 19)
                         nameCurrencyMoneey += currency.getDisplayName() + " ";

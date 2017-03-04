@@ -89,8 +89,10 @@ public class SplashScreen extends Activity implements GoogleApiClient.Connection
 				currency = Currency.getInstance(locale);
 			}
 			ed.putString(getString(R.string.preferences_currency_symbol), currency.getSymbol());
+			ed.putString(getString(R.string.preferences_currency_symbol_first_detect), currency.getSymbol());
 		if (!sharedPrefs.contains(getString(R.string.preferences_currency_country_money_symbol))) {
 			ed.putString(getString(R.string.preferences_currency_country_money_symbol), "USD");
+			ed.putString(getString(R.string.preferences_currency_country_money_symbol_first_detect), "USD");
 		}
 
 		String country = "";
@@ -101,13 +103,16 @@ public class SplashScreen extends Activity implements GoogleApiClient.Connection
 			country = locale.getCountry();
 		}
 		ed.putString(getString(R.string.preferences_currency_country_code), country);
+		ed.putString(getString(R.string.preferences_currency_country_code_first_detect), country);
 		String name = "";
 		if (android.os.Build.VERSION.SDK_INT >= 19) {
 			name = currency.getDisplayName() + " ";
 		}
 		name += currency.getSymbol();
 		ed.putString(getString(R.string.preferences_currency_name_money), name);
+		ed.putString(getString(R.string.preferences_currency_name_money_first_detect), name);
 		ed.putString(getString(R.string.preferences_currency_country_money_symbol), currency.getCurrencyCode());
+		ed.putString(getString(R.string.preferences_currency_country_money_symbol_first_detect), currency.getCurrencyCode());
 	}else{
 			ed.putBoolean("firstTimeOpen",false);
 		}

@@ -26,9 +26,14 @@
     <string name="preferences_currency_country_money_symbol">currencyCountrySymbol</string>
     <string name="preferences_currency_name_money">nameMoney</string>
     <string name="preferences_currency_country_code">countryCode</string>
-    <string name="preferences_currency_money">currencyMoney</string>
-    <string name="settings_option_currency_change">Your country selected is %1$s</string>
 
+
+    <string name="preferences_currency_symbol_first_detect">currencySymbolFirst</string>
+    <string name="preferences_currency_country_money_symbol_first_detect">currencyCountrySymbolFirst</string>
+    <string name="preferences_currency_name_money_first_detect">nameMoneyFirst</string>
+    <string name="preferences_currency_country_code_first_detect">countryCodeFirst</string>
+
+    <string name="settings_option_currency_change">Your country selected is %1$s</string>
     <string name="default_settings">Use location</string>
     <string name="settings_option_select_lenguage">Select language</string>
     <string name="settings_option_language_change">Your language is %1$s</string>
